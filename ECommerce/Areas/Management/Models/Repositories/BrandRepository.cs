@@ -18,27 +18,30 @@ namespace ECommerce.Areas.Management.Models.Repositories
 
         public void Delete(Brand entity)
         {
-            throw new NotImplementedException();
+            db.Brand.Remove(entity);
+            db.SaveChanges();
         }
 
         public Brand Get(int Id)
         {
-            throw new NotImplementedException();
+            return db.Brand.FirstOrDefault(x => x.Id==Id);
         }
 
         public List<Brand> GetAll()
         {
-            throw new NotImplementedException();
+           return db.Brand.ToList();
         }
 
         public void Save(Brand entity)
         {
-            throw new NotImplementedException();
+            db.Brand.Add(entity);
+            db.SaveChanges();
         }
 
         public void Update(Brand entity)
         {
-            throw new NotImplementedException();
+            db.Entry(entity).State=System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
         }
     }
 }
