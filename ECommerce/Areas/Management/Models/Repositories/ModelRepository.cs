@@ -32,6 +32,12 @@ namespace ECommerce.Areas.Management.Models.Repositories
             return db.Model.ToList();
         }
 
+        public List<Model> GetAll (int brandId)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            return db.Model.Where(x => x.brandId == brandId).ToList();
+        }
+
         public void Save(Model entity)
         {
             db.Model.Add(entity);

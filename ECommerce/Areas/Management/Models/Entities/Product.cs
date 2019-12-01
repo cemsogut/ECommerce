@@ -55,8 +55,13 @@ namespace ECommerce.Areas.Management.Models.Entities
 
         public int brandId { get; set; }
         public int categoryId { get; set; }
+        public int ModelId { get; set; }
+        public int SubModelId { get; set; }
 
         public Category Category { get; set; }
+        public Model Model { get; set; }
+        public SubModel SubModel { get; set; }
         public Brand Brand { get; set; }
+
     }
 }

@@ -1,21 +1,23 @@
-﻿@model IEnumerable<ECommerce.Areas.Management.Models.Entities.Brand>
+﻿@model IEnumerable<ECommerce.Areas.Management.Models.Entities.Model>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Management/Views/Shared/Layout.cshtml";
 }
 
-<div class="col-md-12 compose">
+<div class="col-md-10 compose-right">
     <div class="inbox-details-default">
 
         <div class="inbox-details-body">
             <div class="alert alert-info">
-
-                @Html.ActionLink("Yeni Marka", "Create") Markalar
-
+                @Html.ActionLink("Yeni Model", "Create") Marka/Modeller
             </div>
-            <table class="table">
+            <table class="table table-hover">
                 <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Brand.Name)
+                    </th>
+                    
                     <th>
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
@@ -26,18 +28,22 @@
                 {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Brand.Name)
+                        </td>
+                        
+                        <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td>
-                            @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Düzelt", "Edit", new { id = item.Id }) |
                            
                             @Html.ActionLink("Sil", "Delete", new { id = item.Id })
                         </td>
                     </tr>
-                    
                 }
-                
+               
+
             </table>
-            </div>
-</div>
+        </div>
+    </div>
 </div>

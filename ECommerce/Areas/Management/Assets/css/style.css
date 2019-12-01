@@ -11,6 +11,7 @@ p {margin: 0;}
 html, body{
   font-family: 'Work Sans', sans-serif;
    font-size: 100%;
+   height:100%;
    background:#fff; 
 }
 a {
@@ -810,7 +811,7 @@ ul.dropdown-menu.drp-mnu li {
 /*--header strip end here-*/
 /*inner-block--*/
 .inner-block {
-    padding: 8em 2em 4em 2em;
+    padding: 8em 2em 0em 2em;
     background: #fafafa;
 }
 .market-update-block {
