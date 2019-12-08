@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Shoppy an Admin Panel Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <title>Araç Kiralama</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -98,7 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
     <!--geo chart-->
     <!--skycons-icons-->
-    <script src="js/skycons.js"></script>
+    <script src="~/Areas/Management/Assets/js/skycons.js"></script>
     <!--//skycons-icons-->
 </head>
 <body>
@@ -329,8 +329,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-lg-12">
                     @RenderBody()
                 </div>
+               
+               
+                <!--inner block end here-->
                 <!--copy rights start here-->
-                
+               
                 <!--COPY rights end here-->
             </div>
         </div>
@@ -351,22 +354,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <li id="menu-comunicacao">
                         <a href="@Url.Action("Index","Brand")"><i class="fa fa-car nav_icon"></i><span>Markalar</span></a>
-                        
+                      
                     </li>
                     <li><a href="@Url.Action("Index","Model")"><i class="fa fa-cc"></i><span>Modeller</span></a></li>
                     <li id="menu-academico">
-                        <a href="@Url.Action("Index","SubModel")"><i class="fa fa-file-text"></i><span>Alt Modeller</span></a>
-                       
+                        <a href="@Url.Action("Index","subModel")"><i class="fa fa-file-text"></i><span>Alt Modeller</span></a>
+                     
                     </li>
 
                     <li><a href="@Url.Action("Index","Product")"><i class="fa fa-product-hunt"></i><span>Ürünler</span></a></li>
-                    <li>
-                        <a href="#"><i class="fa fa-envelope"></i><span>Mailbox</span><span class="fa fa-angle-right" style="float: right"></span></a>
-                        <ul id="menu-academico-sub">
-                            <li id="menu-academico-avaliacoes"><a href="inbox.html">Inbox</a></li>
-                            <li id="menu-academico-boletim"><a href="inbox-details.html">Compose email</a></li>
-                        </ul>
-                    </li>
+                   
                     <li>
                         <a href="#"><i class="fa fa-cog"></i><span>System</span><span class="fa fa-angle-right" style="float: right"></span></a>
                         <ul id="menu-academico-sub">
@@ -405,10 +402,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <!--scrolling js-->
-    <script src="~/Areas/Management/Assets/"></script>
-    <script src="~/Areas/Management/Assets/"></script>
+    <script src="~/Areas/Management/Assets/js/jquery.nicescroll.js"></script>
+    <script src="~/Areas/Management/Assets/js/scripts.js"></script>
     <!--//scrolling js-->
-    <script src="~/Areas/Management/Assets/"></script>
+    <script src="~/Areas/Management/Assets/js/bootstrap.js"></script>
     <!-- mother grid end here-->
 </body>
-</html>
+</html>                     

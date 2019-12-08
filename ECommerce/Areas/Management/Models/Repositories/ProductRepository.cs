@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Linq.Expressions;
+using System.Data.Entity;
 
 namespace ECommerce.Areas.Management.Models.Repositories
 {
@@ -13,8 +15,9 @@ namespace ECommerce.Areas.Management.Models.Repositories
         private ApplicationDbContext db;
         public ProductRepository(ApplicationDbContext _db)
         {
-            db = _db;
+            db = _db; 
         }
+
         public void Delete(Product entity)
         {
             db.Product.Remove(entity);
@@ -23,12 +26,17 @@ namespace ECommerce.Areas.Management.Models.Repositories
 
         public Product Get(int Id)
         {
-            return db.Product.FirstOrDefault(x => x.Id == Id);
+            return db.Product.FirstOrDefault(x=>x.Id==Id);
         }
 
         public List<Product> GetAll()
         {
             return db.Product.ToList();
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> where)
+        {
+            return db.Product.Where(where).ToList();
         }
 
         public void Save(Product entity)
@@ -39,7 +47,10 @@ namespace ECommerce.Areas.Management.Models.Repositories
 
         public void Update(Product entity)
         {
-            db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            Product old = Get(entity.Id);
+            db.Entry(old).State = EntityState.Detached;
+            
+            db.Entry(entity).State = EntityState.Modified;
             db.SaveChanges();
         }
     }

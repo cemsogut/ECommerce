@@ -4,6 +4,7 @@ using ECommerce.Areas.Management.Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace ECommerce.Areas.Management.Models.Repositories
@@ -11,11 +12,10 @@ namespace ECommerce.Areas.Management.Models.Repositories
     public class BrandRepository : IRepository<Brand>
     {
         private ApplicationDbContext db;
-        public BrandRepository (ApplicationDbContext _db)
+        public BrandRepository(ApplicationDbContext _db)
         {
             db = _db;
         }
-
         public void Delete(Brand entity)
         {
             db.Brand.Remove(entity);
@@ -24,12 +24,17 @@ namespace ECommerce.Areas.Management.Models.Repositories
 
         public Brand Get(int Id)
         {
-            return db.Brand.FirstOrDefault(x => x.Id==Id);
+            return db.Brand.FirstOrDefault(x=>x.Id==Id);
         }
 
         public List<Brand> GetAll()
         {
-           return db.Brand.ToList();
+            return db.Brand.ToList();
+        }
+
+        public List<Brand> GetAll(Expression<Func<Brand, bool>> where)
+        {
+            return db.Brand.Where(where).ToList();
         }
 
         public void Save(Brand entity)
@@ -40,7 +45,7 @@ namespace ECommerce.Areas.Management.Models.Repositories
 
         public void Update(Brand entity)
         {
-            db.Entry(entity).State=System.Data.Entity.EntityState.Modified;
+            db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
         }
     }

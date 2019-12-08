@@ -12,9 +12,9 @@ namespace ECommerce.Areas.Management.Controllers
     {
         ModelRepository MR = new ModelRepository(new Models.Context.ApplicationDbContext());
         BrandRepository BR = new BrandRepository(new Models.Context.ApplicationDbContext());
+
         public ActionResult Index()
         {
-            
             return View(MR.GetAll());
         }
         public ActionResult Create()
@@ -43,7 +43,7 @@ namespace ECommerce.Areas.Management.Controllers
                 MR.Update(model);
             return RedirectToAction("/");
         }
-        public ActionResult Delete (int id)
+        public ActionResult Delete(int id)
         {
             ViewBag.Brands = BR.GetAll();
             return View(MR.Get(id));

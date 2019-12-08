@@ -4,16 +4,15 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Management/Views/Shared/Layout.cshtml";
 }
-
-<div class="col-md-12 compose">
+<div class="col-md-10 compose">
     <div class="inbox-details-default">
 
         <div class="inbox-details-body">
             <div class="alert alert-info">
 
                 @Html.ActionLink("Yeni Marka", "Create") Markalar
-
             </div>
+
             <table class="table">
                 <tr>
                     <th>
@@ -29,15 +28,14 @@
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td>
-                            @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) |
-                           
+                            @Html.ActionLink("Değiştir", "Edit", new { id = item.Id }) |
+                        
                             @Html.ActionLink("Sil", "Delete", new { id = item.Id })
                         </td>
                     </tr>
-                    
                 }
-                
+
             </table>
             </div>
-</div>
-</div>
+        </div>
+    </div>

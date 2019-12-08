@@ -1,17 +1,18 @@
-﻿using ECommerce.Areas.Management.Models.Entities;
+﻿using ECommerce.Areas.Management.Models.Context;
+using ECommerce.Areas.Management.Models.Entities;
 using ECommerce.Areas.Management.Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
-using ECommerce.Areas.Management.Models.Context;
 
 namespace ECommerce.Areas.Management.Models.Repositories
 {
-    public class ModelRepository : IRepository<Model>
+    public class ModelRepository:IRepository<Model>
     {
         private ApplicationDbContext db;
-        public ModelRepository (ApplicationDbContext _db)
+        public ModelRepository(ApplicationDbContext _db)
         {
             db = _db;
         }
@@ -29,10 +30,15 @@ namespace ECommerce.Areas.Management.Models.Repositories
 
         public List<Model> GetAll()
         {
-            return db.Model.ToList();
+            return db.Model.ToList(); 
         }
 
-        public List<Model> GetAll (int brandId)
+        public List<Model> GetAll(Expression<Func<Model, bool>> where)
+        {
+            return db.Model.Where(where).ToList();
+        }
+
+        public List<Model> GetAll(int brandId)
         {
             db.Configuration.ProxyCreationEnabled = false;
             return db.Model.Where(x => x.brandId == brandId).ToList();

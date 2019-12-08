@@ -811,7 +811,7 @@ ul.dropdown-menu.drp-mnu li {
 /*--header strip end here-*/
 /*inner-block--*/
 .inner-block {
-    padding: 8em 2em 0em 2em;
+    padding: 8em 2em 4em 2em;
     background: #fafafa;
 }
 .market-update-block {
@@ -2412,7 +2412,6 @@ ul.nav.tabs li a span {
         -moz-transition: 0.5s all;
         -o-transition: 0.5s all;
     }
-
 .compose-right {
     padding: 0px;
 }
@@ -2421,10 +2420,11 @@ ul.nav.tabs li a span {
     background-color: #FC8213;
     border: 1px solid #dc501b;
     color: #fff;
-    padding: 0.5em 1.5em;
+    padding: 0.5em 1em;
     margin-top: 1em;
     outline: none;
 }
+
 /*--inbox details--*/
 /*--product start here--*/
 .product-items {

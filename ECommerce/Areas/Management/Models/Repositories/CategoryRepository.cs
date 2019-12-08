@@ -4,6 +4,7 @@ using ECommerce.Areas.Management.Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace ECommerce.Areas.Management.Models.Repositories
@@ -11,10 +12,10 @@ namespace ECommerce.Areas.Management.Models.Repositories
     public class CategoryRepository : IRepository<Category>
     {
         private ApplicationDbContext db;
-        public CategoryRepository (ApplicationDbContext _db)
+        public CategoryRepository(ApplicationDbContext _db)
         {
             db = _db;
-         }
+        }
         public void Delete(Category entity)
         {
             db.Category.Remove(entity);
@@ -31,11 +32,15 @@ namespace ECommerce.Areas.Management.Models.Repositories
             return db.Category.ToList();
         }
 
+        public List<Category> GetAll(Expression<Func<Category, bool>> where)
+        {
+            return db.Category.Where(where).ToList();
+        }
+
         public void Save(Category entity)
         {
             db.Category.Add(entity);
             db.SaveChanges();
-
         }
 
         public void Update(Category entity)
@@ -44,6 +49,4 @@ namespace ECommerce.Areas.Management.Models.Repositories
             db.SaveChanges();
         }
     }
-
-
 }

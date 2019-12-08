@@ -22,10 +22,10 @@ namespace ECommerce.Areas.Management.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category Model)
+        public ActionResult Create(Category model)
         {
             if (ModelState.IsValid)
-                CR.Save(Model);
+                CR.Save(model);
             return RedirectToAction("/");
         }
         public ActionResult Edit(int id)
@@ -34,7 +34,6 @@ namespace ECommerce.Areas.Management.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Edit(Category model)
         {
             if (ModelState.IsValid)
@@ -45,14 +44,14 @@ namespace ECommerce.Areas.Management.Controllers
         {
             return View(CR.Get(id));
         }
-        [HttpPost, ActionName("Delete")]
+        [HttpPost,ActionName("Delete")]
         [ValidateAntiForgeryToken]
-
         public ActionResult DeleteCategory(int id)
         {
             if (ModelState.IsValid)
                 CR.Delete(CR.Get(id));
             return RedirectToAction("/");
         }
+
     }
 }

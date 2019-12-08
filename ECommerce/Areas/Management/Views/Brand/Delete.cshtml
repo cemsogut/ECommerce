@@ -10,28 +10,22 @@
 
         <div class="inbox-details-body">
             <div class="alert alert-info">
-
                 Marka Silme Formu
             </div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-            <h3>Silmek İstediğinize Emin Misiniz?</h3>
-            <div>
-                
-                <hr />
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Name)
-                    </dd>
+            </dl>
 
-                </dl>
-
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-5">
@@ -40,8 +34,8 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                }
-            </div>
-            </div>
+            }
+        </div>
         </div>
     </div>
+

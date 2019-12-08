@@ -22,10 +22,10 @@ namespace ECommerce.Areas.Management.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Brand Model)
+        public ActionResult Create(Brand model)
         {
             if (ModelState.IsValid)
-                BR.Save(Model);
+                BR.Save(model);
             return RedirectToAction("/");
         }
         public ActionResult Edit(int id)
@@ -34,7 +34,6 @@ namespace ECommerce.Areas.Management.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Edit(Brand model)
         {
             if (ModelState.IsValid)
@@ -47,12 +46,12 @@ namespace ECommerce.Areas.Management.Controllers
         }
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-
         public ActionResult DeleteBrand(int id)
         {
             if (ModelState.IsValid)
                 BR.Delete(BR.Get(id));
             return RedirectToAction("/");
         }
+
     }
 }

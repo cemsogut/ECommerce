@@ -4,6 +4,7 @@ using ECommerce.Areas.Management.Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace ECommerce.Areas.Management.Models.Repositories
@@ -23,19 +24,24 @@ namespace ECommerce.Areas.Management.Models.Repositories
 
         public SubModel Get(int Id)
         {
-            return db.SubModel.FirstOrDefault(x => x.Id == Id);
+            return db.SubModel.Find(Id);
         }
 
         public List<SubModel> GetAll()
         {
             return db.SubModel.ToList();
         }
-        public List<SubModel> GetAll(int ModelId)
+        public List<SubModel> GetAll(int modelId)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            return db.SubModel.Where(x=>x.ModelId==ModelId).ToList();
+            return db.SubModel.Where(x=>x.modelId==modelId).ToList();
         }
 
+        public List<SubModel> GetAll(Expression<Func<SubModel, bool>> where)
+        {
+            return db.SubModel.Where(where).ToList();
+        }
+       
 
         public void Save(SubModel entity)
         {
@@ -48,5 +54,6 @@ namespace ECommerce.Areas.Management.Models.Repositories
             db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
         }
+
     }
 }

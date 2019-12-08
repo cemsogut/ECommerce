@@ -9,11 +9,11 @@ namespace ECommerce.Areas.Management.Models.Entities
 {
     public class Category:BaseEntity
     {
-        [Display(Name="Üst Kategri")]
+        [Display(Name="Üst Kategori")]
         public int ParentId { get; set; }
-        [Display(Name ="Açıklama")]
-        public string Description { get; set; }
-        public virtual ICollection<Product> Product { get; set; }
+        [Display(Name = "Açiklama")]
+        public string Description{ get; set; }
 
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

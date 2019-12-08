@@ -10,23 +10,25 @@ namespace ECommerce.Areas.Management.Controllers
 {
     public class SubModelController : Controller
     {
+        SubModelRepository SMR = new SubModelRepository(new Models.Context.ApplicationDbContext());
         ModelRepository MR = new ModelRepository(new Models.Context.ApplicationDbContext());
         BrandRepository BR = new BrandRepository(new Models.Context.ApplicationDbContext());
-        SubModelRepository SR = new SubModelRepository(new Models.Context.ApplicationDbContext());
+        // GET: Management/SubModel
         public ActionResult Index()
         {
-
-            return View(SR.GetAll());
+            return View(SMR.GetAll());
         }
         [HttpPost]
-        public ActionResult getModels (int brandId)
+        public ActionResult getModels(int brandId)
         {
+           
             return Json(MR.GetAll(brandId), JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult getSubModels(int ModelId)
+        public ActionResult getSubModels(int modelId)
         {
-            return Json(SR.GetAll(ModelId), JsonRequestBehavior.AllowGet);
+
+            return Json(SMR.GetAll(modelId), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create()
@@ -39,38 +41,38 @@ namespace ECommerce.Areas.Management.Controllers
         public ActionResult Create(SubModel model)
         {
             if (ModelState.IsValid)
-                SR.Save(model);
+                SMR.Save(model);
             return RedirectToAction("/");
         }
-        
-    
-        
         public ActionResult Edit(int id)
         {
-            int brandCode = SR.Get(id).Model.Brand.Id;
-            ViewBag.Brands = new SelectList(BR.GetAll(), "Id", "Name",brandCode);
-            ViewBag.Models = new SelectList(MR.GetAll(), "Id", "Name", SR.Get(id).ModelId);
-            return View(SR.Get(id));
+            int brandCode = SMR.Get(id).Model.Brand.Id;
+            ViewBag.Brands = new SelectList(BR.GetAll(), "Id", "Name", brandCode);
+
+            ViewBag.Models = new SelectList(MR.GetAll(), "Id", "Name", SMR.Get(id).modelId);
+            return View(SMR.Get(id));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(SubModel model)
         {
             if (ModelState.IsValid)
-                SR.Update(model);
+                SMR.Update(model);
             return RedirectToAction("/");
         }
-        public ActionResult Delete (int id)
+        public ActionResult Delete(int id)
         {
-            return View(SR.Get(id));
+            return View(SMR.Get(id));
         }
         [HttpPost,ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Deletex(int id)
         {
             if (ModelState.IsValid)
-                SR.Delete(SR.Get(id));
+                SMR.Delete(SMR.Get(id));
             return RedirectToAction("/");
         }
+
+
     }
 }
